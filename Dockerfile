@@ -1,11 +1,11 @@
 # build stage
-FROM node:16-alpine as build-stage
+FROM node:16 as build-stage
 WORKDIR /app
 COPY package*.json yarn.lock ./
 
 RUN yarn install
 
-COPY public/ src/ babel.config.js vue.config.js ./
+COPY . .
 RUN yarn build
 
 # production stage
